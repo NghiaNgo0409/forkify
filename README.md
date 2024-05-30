@@ -1,5 +1,6 @@
-#Forkify
+# Forkify
 
 Cooking Recipes Library Web App
 
-#New domain: https://nghiango.netlify.app/
+# New domain
+https://nghiango.netlify.app/
