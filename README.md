@@ -2,5 +2,5 @@
 
 Cooking Recipes Library Web App
 
-# New domain
+## New domain
 https://nghiango.netlify.app/
