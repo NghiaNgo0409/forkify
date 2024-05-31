@@ -600,8 +600,9 @@ var _paginationViewJsDefault = parcelHelpers.interopDefault(_paginationViewJs);
 //////////////////////////////////////
 const controlRecipe = async function() {
     try {
+        const id = window.location.hash.slice(1);
+        if (!id) return;
         (0, _recipeViewJsDefault.default).renderSpinner();
-        const id = window.location.hash.slice(1) ? window.location.hash.slice(1) : "664c8f193e7aa067e94e8706";
         await _modelJs.loadRecipe(id);
         const { recipe } = _modelJs.state;
         (0, _recipeViewJsDefault.default).render(recipe);
@@ -618,7 +619,7 @@ const controlSearch = async function() {
         await _modelJs.loadSearchResults(query);
         console.log(_modelJs.state.search.results);
         // resultsView.render(model.state.search.results);
-        (0, _resultsViewJsDefault.default).render(_modelJs.getResultsPage(4));
+        (0, _resultsViewJsDefault.default).render(_modelJs.getResultsPage());
         (0, _paginationViewJsDefault.default).render(_modelJs.state.search);
     } catch (err) {
         console.error(err);
@@ -634,7 +635,6 @@ const init = function() {
     (0, _paginationViewJsDefault.default).addHandlerClick(controlPagination);
 };
 init();
-controlRecipe();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","core-js/modules/web.immediate.js":"49tUX","./model.js":"Y4A21","./view/recipeView.js":"7Olh7","./view/searchView.js":"blwqv","./view/resultsView.js":"46Nfk","./view/paginationView.js":"9Reww","regenerator-runtime":"dXNgZ"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {

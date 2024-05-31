@@ -13,11 +13,10 @@ import paginationView from './view/paginationView.js';
 
 const controlRecipe = async function () {
   try {
-    recipeView.renderSpinner();
+    const id = window.location.hash.slice(1);
+    if (!id) return;
 
-    const id = window.location.hash.slice(1)
-      ? window.location.hash.slice(1)
-      : '664c8f193e7aa067e94e8706';
+    recipeView.renderSpinner();
 
     await model.loadRecipe(id);
 
@@ -62,4 +61,3 @@ const init = function () {
 };
 
 init();
-controlRecipe();
