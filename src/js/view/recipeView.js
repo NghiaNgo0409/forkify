@@ -4,6 +4,7 @@ import View from './View';
 
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
+  _errorMessage = 'We could not find that recipe!. Please try the other one';
 
   _generateMarkup() {
     return `<figure class="recipe__fig">
@@ -54,7 +55,9 @@ class RecipeView extends View {
     </div>
     <button class="btn--round">
       <svg class="">
-        <use href="${icon}#icon-bookmark-fill"></use>
+        <use href="${icon}#icon-bookmark${
+      this._data.bookmarked ? '-fill' : ''
+    }"></use>
       </svg>
     </button>
   </div>
@@ -116,6 +119,14 @@ class RecipeView extends View {
       if (!btn) return;
       const { serving_goto } = btn.dataset;
       if (+serving_goto > 0) handler(+serving_goto);
+    });
+  }
+
+  addHandlerModifyBookmark(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const btn = e.target.closest('.btn--round');
+      if (!btn) return;
+      handler();
     });
   }
 }

@@ -5,7 +5,7 @@ export default class View {
 
   render(data) {
     if (!data || (Array.isArray(data) && data.length == 0))
-      return this.renderError('Cannot find your query!');
+      return this.renderError(this._errorMessage);
 
     this._data = data;
     const markup = this._generateMarkup();
